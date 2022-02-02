@@ -1,6 +1,7 @@
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Restaurant {
     private String name;
@@ -70,7 +71,9 @@ public class Restaurant {
 
     public int getOrderCost(List<String> items) {
         int orderCost = 0;
-        // Implement the logic here to calculate order cost
+        for (String item : items) {
+            orderCost += Objects.requireNonNull(findItemByName(item)).getPrice();
+        }
         return orderCost;
     }
 }
