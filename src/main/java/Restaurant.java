@@ -22,7 +22,9 @@ public class Restaurant {
         return !currentTime.isBefore(openingTime) && !currentTime.isAfter(closingTime);
     }
 
-    public LocalTime getCurrentTime(){ return  LocalTime.now(); }
+    public LocalTime getCurrentTime() {
+        return LocalTime.now();
+    }
 
     public List<Item> getMenu() throws itemNotFoundException {
         if (menu.size() == 0)
@@ -31,16 +33,16 @@ public class Restaurant {
         return menu;
     }
 
-    private Item findItemByName(String itemName){
-        for(Item item: menu) {
-            if(item.getName().equals(itemName))
+    private Item findItemByName(String itemName) {
+        for (Item item : menu) {
+            if (item.getName().equals(itemName))
                 return item;
         }
         return null;
     }
 
     public void addToMenu(String name, int price) {
-        Item newItem = new Item(name,price);
+        Item newItem = new Item(name, price);
         menu.add(newItem);
     }
 
@@ -52,12 +54,13 @@ public class Restaurant {
 
         menu.remove(itemToBeRemoved);
     }
+
     public void displayDetails() throws itemNotFoundException {
-        System.out.println("Restaurant:"+ name + "\n"
-                +"Location:"+ location + "\n"
-                +"Opening time:"+ openingTime +"\n"
-                +"Closing time:"+ closingTime +"\n"
-                +"Menu:"+"\n"+getMenu());
+        System.out.println("Restaurant:" + name + "\n"
+                + "Location:" + location + "\n"
+                + "Opening time:" + openingTime + "\n"
+                + "Closing time:" + closingTime + "\n"
+                + "Menu:" + "\n" + getMenu());
 
     }
 
@@ -65,4 +68,9 @@ public class Restaurant {
         return name;
     }
 
+    public int getOrderCost(List<String> items) {
+        int orderCost = 0;
+        // Implement the logic here to calculate order cost
+        return orderCost;
+    }
 }
